@@ -8,7 +8,9 @@
     MPI_Comm_size(MPI_COMM_WORLD,&size);
 
     MPI_Scatter(data,1,MPI_INT,&recv,1,MPI_INT,0,MPI_COMM_WORLD);
+    printf("Process %d Received %d \n",rank,recv);
     recv+=1;
+    printf("\n");
     MPI_Gather(&recv,1,MPI_INT,data,1,MPI_INT,0,MPI_COMM_WORLD);
      if(rank==0){
         printf("Gathered data: ");
